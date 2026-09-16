@@ -101,5 +101,6 @@ main li { margin-block: 3px; }
 
 .contact-card .publisher span { display: inline-block; }
 @media screen and (max-width: 600px) {
-  .contact-card .publisher strong { display: block; }
+  .contact-card { padding-inline: 24px; }
+  .contact-card .publisher { font-size: clamp(.75rem, 3.5vw, .9375rem); }
 }
