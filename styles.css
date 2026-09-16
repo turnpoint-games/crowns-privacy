@@ -60,3 +60,16 @@ footer { grid-column: 2; margin-top: 48px; padding-top: 24px; border-top: 1px so
   .page { width: auto; margin: 0; padding: 28px max(18px, env(safe-area-inset-right)) 36px max(18px, env(safe-area-inset-left)); border: 0; border-radius: 0; box-shadow: none; }
 }
 @media screen and (max-width: 380px) { .nav-links { grid-template-columns: 1fr; } }
+
+@media screen and (max-width: 600px) {
+  body { font-size: .9375rem; line-height: 1.7; }
+  .page { padding-inline: max(24px, env(safe-area-inset-left)) max(24px, env(safe-area-inset-right)); }
+  header { padding-top: 8px; }
+  .brand { margin-bottom: 32px; }
+  h1 { font-size: clamp(2rem, 7.6vw, 2.7rem); }
+  h2 { font-size: 1.45rem; }
+  h3 { font-size: 1rem; }
+  .section-number { font-size: 1.1rem; }
+  header::before { width: 38px; height: 38px; right: 4px; top: 3px; }
+  header::after { display: block; width: 23px; height: 23px; right: 61px; top: 50px; }
+}
