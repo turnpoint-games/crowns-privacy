@@ -1,5 +1,10 @@
 // Local reading-position indicator only. No storage or network requests.
 (() => {
+  const contents = document.querySelector('.contents');
+  const compact = window.matchMedia('(max-width: 900px)');
+  const adaptContents = () => { if (contents) contents.open = !compact.matches; };
+  adaptContents();
+  compact.addEventListener('change', adaptContents);
   const links = [...document.querySelectorAll('.nav-links a[href^="#section-"]')];
   const sections = links.map(link => document.getElementById(link.hash.slice(1)));
   if (!links.length || sections.some(section => !section)) return;
