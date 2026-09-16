@@ -1,0 +1,28 @@
+// Local reading-position indicator only. No storage or network requests.
+(() => {
+  const links = [...document.querySelectorAll('.nav-links a[href^="#section-"]')];
+  const sections = links.map(link => document.getElementById(link.hash.slice(1)));
+  if (!links.length || sections.some(section => !section)) return;
+  let scheduled = false;
+  function update() {
+    scheduled = false;
+    const readingLine = Math.min(180, window.innerHeight * 0.25);
+    let current = -1;
+    sections.forEach((section, index) => {
+      if (section.getBoundingClientRect().top <= readingLine) current = index;
+    });
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) current = sections.length - 1;
+    links.forEach((link, index) => {
+      if (index === current) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+  function schedule() {
+    if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
+  }
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  window.addEventListener('hashchange', schedule);
+  window.addEventListener('pageshow', schedule);
+  update();
+})();
