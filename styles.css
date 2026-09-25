@@ -100,7 +100,12 @@ main li { margin-block: 3px; }
 }
 
 .contact-card .publisher span { display: inline-block; }
+.contact-card .privacy-contact strong { display: block; margin-bottom: 2px; }
 @media screen and (max-width: 600px) {
   .contact-card { padding-inline: 24px; }
-  .contact-card .publisher { font-size: clamp(.75rem, 3.5vw, .9375rem); }
+  .contact-card .publisher { font-size: .9375rem; }
+  .contact-card a { overflow-wrap: normal; }
+}
+@media screen and (max-width: 380px) {
+  .contact-card p strong { display: block; margin-bottom: 2px; }
 }
